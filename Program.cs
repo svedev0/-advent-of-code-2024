@@ -4,7 +4,7 @@ namespace advent_of_code_2024;
 
 public class Program
 {
-	private static readonly int DAY = 1;
+	private static readonly int DAY = 2;
 
 	public static void Main(string[] _)
 	{
@@ -16,6 +16,10 @@ public class Program
 			case 1:
 				Day01.SolvePart1();
 				Day01.SolvePart2();
+				break;
+			case 2:
+				Day02.SolvePart1();
+				Day02.SolvePart2();
 				break;
 			default:
 				throw new Exception("Invalid day");

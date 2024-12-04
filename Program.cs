@@ -2,16 +2,24 @@
 
 namespace advent_of_code_2024;
 
+// dotnet run -day=4
+
 public class Program
 {
-	private static readonly int DAY = 3;
-
-	public static void Main(string[] _)
+	public static void Main(string[] args)
 	{
-		long startTime = Stopwatch.GetTimestamp();
-		Welcome();
+		int day = ValidateArgs(args);
 
-		switch (DAY)
+		Console.WriteLine($"""
+			===== Advent of Code 2024 =====
+
+			Day {day:D2}:
+
+			""");
+
+		long startTime = Stopwatch.GetTimestamp();
+
+		switch (day)
 		{
 			case 1:
 				Day01.SolvePart1();
@@ -25,8 +33,12 @@ public class Program
 				Day03.SolvePart1();
 				Day03.SolvePart2();
 				break;
+			case 4:
+				Day04.SolvePart1();
+				Day04.SolvePart2();
+				break;
 			default:
-				throw new Exception("Invalid day");
+				throw new Exception("Invalid day. Day not found");
 		}
 
 		TimeSpan elapsed = Stopwatch.GetElapsedTime(startTime);
@@ -34,14 +46,24 @@ public class Program
 		Console.WriteLine($"The program finished in {elapsedMs} ms");
 	}
 
-	private static void Welcome()
+	private static int ValidateArgs(string[] args)
 	{
-		string messsage = $"""
-			===== Advent of Code 2024 =====
+		if (args.Length != 1 || !args.Any(a => a.Contains("-day=")))
+		{
+			throw new Exception("Missing argument 'day'.\nExample: -day=4");
+		}
 
-			Day {DAY}:
+		string dayArg = args[0].Replace("-day=", string.Empty);
+		if (!int.TryParse(dayArg, out int day))
+		{
+			throw new Exception("Invalid value in argument 'day'");
+		}
 
-			""";
-		Console.WriteLine(messsage);
+		if (day is < 1 or > 25)
+		{
+			throw new Exception("Invalid value in argument 'day'");
+		}
+
+		return day;
 	}
 }

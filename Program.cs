@@ -2,7 +2,7 @@
 
 namespace advent_of_code_2024;
 
-// dotnet run -c Release -- -day=18
+// dotnet run -c Release -- -day=19
 
 public class Program
 {
@@ -92,6 +92,10 @@ public class Program
 			case 18:
 				Day18.SolvePart1();
 				Day18.SolvePart2();
+				break;
+			case 19:
+				Day19.SolvePart1();
+				Day19.SolvePart2();
 				break;
 			default:
 				throw new Exception("Invalid day. Day not found");

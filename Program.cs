@@ -2,8 +2,6 @@
 
 namespace advent_of_code_2024;
 
-// dotnet run -c Release -- -day=22
-
 public class Program
 {
 	public static void Main(string[] args)
@@ -109,8 +107,13 @@ public class Program
 				Day22.SolvePart1();
 				Day22.SolvePart2();
 				break;
+			case 23:
+				Day23.SolvePart1();
+				Day23.SolvePart2();
+				break;
 			default:
-				throw new Exception("Invalid day. Day not found");
+				Console.WriteLine("Invalid day. Day not found");
+				return;
 		}
 
 		TimeSpan elapsed = Stopwatch.GetElapsedTime(startTime);
@@ -122,18 +125,21 @@ public class Program
 	{
 		if (args.Length != 1 || !args.Any(a => a.Contains("-day=")))
 		{
-			throw new Exception("Missing argument 'day'.\nExample: -day=4");
+			Console.WriteLine("Missing argument 'day'.\nExample: -day=4");
+			Environment.Exit(1);
 		}
 
 		string dayArg = args[0].Replace("-day=", string.Empty);
 		if (!int.TryParse(dayArg, out int day))
 		{
-			throw new Exception("Invalid value in argument 'day'");
+			Console.WriteLine("Invalid value in argument 'day'");
+			Environment.Exit(1);
 		}
 
 		if (day is < 1 or > 25)
 		{
-			throw new Exception("Invalid value in argument 'day'");
+			Console.WriteLine("Invalid value in argument 'day'");
+			Environment.Exit(1);
 		}
 
 		return day;

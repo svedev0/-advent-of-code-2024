@@ -111,6 +111,10 @@ public class Program
 				Day23.SolvePart1();
 				Day23.SolvePart2();
 				break;
+			case 24:
+				Day24.SolvePart1();
+				Day24.SolvePart2();
+				break;
 			default:
 				Console.WriteLine("Invalid day. Day not found");
 				return;
